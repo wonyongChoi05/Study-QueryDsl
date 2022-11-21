@@ -32,4 +32,9 @@ public class MemberApiController {
     public void printMemberByAgeOrderByAgeDescByFirstOne() {
         memberService.searchOlderMember();
     }
+
+    @GetMapping("/dto")
+    public void printResponseDto() {
+        memberService.searchMemberResponseDto();
+    }
 }

@@ -1,8 +1,10 @@
 package com.study.querydsl.domain.member.domain.repository;
 
+import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.JPAExpressions;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.study.querydsl.domain.member.domain.Member;
+import com.study.querydsl.domain.member.presentation.dto.res.MemberResponseDto;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
@@ -42,7 +44,7 @@ public class MemberRepositoryImpl implements MemberCustomRepository {
                 .fetch();
     }
 
-    @Override
+    @Override // 서브쿼리 사용시 한방쿼리로 성능 최적화 불가능
     public Member searchMemberByOrderByAgeFirstOne() {
         return jpaQueryFactory.select(member)
                 .from(member)
@@ -56,5 +58,11 @@ public class MemberRepositoryImpl implements MemberCustomRepository {
                 .fetchFirst();
     }
 
-
+    @Override
+    public MemberResponseDto searchMemberResponseDto() {
+        return jpaQueryFactory.select(Projections.constructor(MemberResponseDto.class, member))
+                .from(member)
+                .where(member.username.eq("member1"))
+                .fetchOne();
+    }
 }

@@ -2,6 +2,7 @@ package com.study.querydsl.domain.member.service;
 
 import com.study.querydsl.domain.member.domain.Member;
 import com.study.querydsl.domain.member.domain.repository.MemberRepository;
+import com.study.querydsl.domain.member.presentation.dto.res.MemberResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -47,5 +48,12 @@ public class MemberService {
         Member member = memberRepository.searchMemberByOrderByAgeFirstOne();
         System.out.println("member.getAge() = " + member.getAge());
         System.out.println("member.getTeam().getName() = " + member.getTeam().getName());
+    }
+
+
+    public void searchMemberResponseDto() {
+        MemberResponseDto memberResponseDto = memberRepository.searchMemberResponseDto();
+        System.out.println("username = " + memberResponseDto.getUsername());
+        System.out.println("age = " + memberResponseDto.getAge());
     }
 }
