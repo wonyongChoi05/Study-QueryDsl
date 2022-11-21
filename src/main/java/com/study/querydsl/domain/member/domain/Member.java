@@ -19,7 +19,7 @@ public class Member {
 
     private String username;
 
-    private int age;
+    private Integer age;
 
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "team_id")

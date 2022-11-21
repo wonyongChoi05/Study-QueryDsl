@@ -27,4 +27,9 @@ public class MemberApiController {
     public void printMemberByTeamName() {
         memberService.searchUserByTeamName();
     }
+
+    @GetMapping("/sub")
+    public void printMemberByAgeOrderByAgeDescByFirstOne() {
+        memberService.searchOlderMember();
+    }
 }

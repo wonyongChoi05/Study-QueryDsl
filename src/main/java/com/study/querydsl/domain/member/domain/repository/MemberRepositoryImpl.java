@@ -1,6 +1,6 @@
 package com.study.querydsl.domain.member.domain.repository;
 
-import com.querydsl.core.Tuple;
+import com.querydsl.jpa.JPAExpressions;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.study.querydsl.domain.member.domain.Member;
 import lombok.RequiredArgsConstructor;
@@ -40,6 +40,20 @@ public class MemberRepositoryImpl implements MemberCustomRepository {
                 .fetchJoin()
                 .where(member.username.eq("member3"))
                 .fetch();
+    }
+
+    @Override
+    public Member searchMemberByOrderByAgeFirstOne() {
+        return jpaQueryFactory.select(member)
+                .from(member)
+                .where(member.age.eq(
+                        JPAExpressions
+                                .select(member.age.max())
+                                .from(member)
+                ))
+                .leftJoin(member.team, team)
+                .fetchJoin()
+                .fetchFirst();
     }
 
 

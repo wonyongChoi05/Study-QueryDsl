@@ -11,4 +11,7 @@ public interface MemberCustomRepository {
     List<Member> searchMemberAndTeamName();
 
     List<Member> searchMemberByTeamName();
+
+    Member searchMemberByOrderByAgeFirstOne();
+
 }

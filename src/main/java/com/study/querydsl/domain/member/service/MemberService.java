@@ -42,4 +42,10 @@ public class MemberService {
             System.out.println("member.getUsername() = " + member.getUsername());
         });
     }
+
+    public void searchOlderMember() {
+        Member member = memberRepository.searchMemberByOrderByAgeFirstOne();
+        System.out.println("member.getAge() = " + member.getAge());
+        System.out.println("member.getTeam().getName() = " + member.getTeam().getName());
+    }
 }
