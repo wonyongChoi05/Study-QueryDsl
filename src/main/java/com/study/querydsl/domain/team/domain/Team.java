@@ -2,12 +2,14 @@ package com.study.querydsl.domain.team.domain;
 
 import com.study.querydsl.domain.member.domain.Member;
 import lombok.AccessLevel;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 @Entity
 public class Team {

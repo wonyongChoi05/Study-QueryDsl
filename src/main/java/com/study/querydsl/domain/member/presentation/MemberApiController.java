@@ -18,4 +18,9 @@ public class MemberApiController {
         memberService.search();
     }
 
+    @GetMapping("/join")
+    public void printMemberAndTeam() {
+        memberService.searchUserAndTeam();
+    }
+
 }
