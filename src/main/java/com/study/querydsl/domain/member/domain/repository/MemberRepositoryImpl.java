@@ -1,5 +1,6 @@
 package com.study.querydsl.domain.member.domain.repository;
 
+import com.querydsl.core.Tuple;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.study.querydsl.domain.member.domain.Member;
 import lombok.RequiredArgsConstructor;
@@ -28,6 +29,16 @@ public class MemberRepositoryImpl implements MemberCustomRepository {
                 // 연관관계가 맺어져 있는 상태여서 굳이 join 쿼리를 작성하지 않아도 됨
                 .leftJoin(member.team, team)
                 .where(team.name.eq("team1"))
+                .fetch();
+    }
+
+    @Override
+    public List<Member> searchMemberByTeamName() {
+        return jpaQueryFactory.select(member)
+                .from(member)
+                .leftJoin(member.team, team)
+                .fetchJoin()
+                .where(member.username.eq("member3"))
                 .fetch();
     }
 

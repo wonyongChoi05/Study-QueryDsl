@@ -23,4 +23,8 @@ public class MemberApiController {
         memberService.searchUserAndTeam();
     }
 
+    @GetMapping("/fetch")
+    public void printMemberByTeamName() {
+        memberService.searchUserByTeamName();
+    }
 }

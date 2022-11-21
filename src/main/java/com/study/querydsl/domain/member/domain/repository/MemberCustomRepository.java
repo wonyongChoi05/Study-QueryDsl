@@ -9,4 +9,6 @@ public interface MemberCustomRepository {
     List<Member> searchMember(String username, int age);
 
     List<Member> searchMemberAndTeamName();
+
+    List<Member> searchMemberByTeamName();
 }

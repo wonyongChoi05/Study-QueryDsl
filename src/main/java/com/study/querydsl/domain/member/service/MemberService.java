@@ -34,4 +34,12 @@ public class MemberService {
             System.out.println("<================================>");
         });
     }
+
+    public void searchUserByTeamName() {
+        List<Member> members = memberRepository.searchMemberByTeamName();
+        System.out.println(members);
+        members.forEach(member -> {
+            System.out.println("member.getUsername() = " + member.getUsername());
+        });
+    }
 }
